@@ -28,11 +28,3 @@ def preprocess(data: pd.DataFrame,
 
     return X, y
 
-
-# need to add config
-path = "../data/raw/data.csv"
-data = pd.read_csv(path)
-
-X, y = preprocess(data, columns_to_drop=['id', "Unnamed: 32"],
-                  target_col='diagnosis')
-print(X, y)

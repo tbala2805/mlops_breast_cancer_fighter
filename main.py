@@ -1,68 +1,68 @@
-import pandas as pd
-import numpy as np
-
-import seaborn as sns
-import matplotlib.pyplot as plt
-import plotly.express as px
-
-from sklearn.metrics import confusion_matrix, classification_report
-from sklearn.preprocessing import MinMaxScaler, LabelEncoder
-from sklearn.model_selection import train_test_split
-
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
-
-
-
-path = "data/raw/data.csv"
-data = pd.read_csv(path)
-
-print(data.head(20))
-print(data.info())
-
-
-## Preprocessing a bit
-data.drop(columns=['id', "Unnamed: 32"], inplace=True)
-
-# printing the column to list
-print(data.columns.to_list())
-
-
-# printing the number of Malignant and Benign
-data_diagnosis = data['diagnosis'].value_counts().reset_index()
-print(data_diagnosis)
-
-
-# # show the difference between the number of Malignant & benign
-# fig = px.pie(data_diagnosis, values='count', names='diagnosis', title='the number of Malignant and Benign')
+# import pandas as pd
+# import numpy as np
 #
-# fig.show()
-
-
-# training a model,
-X = data.drop('diagnosis', axis = 1)
-y = data['diagnosis']
-
-
-# scaling the features to max value 1 and min value of 0
-scaler = MinMaxScaler()
-X = scaler.fit_transform(X)
-
-# encoding the target from categorical to numerical
-encoder = LabelEncoder()
-y = encoder.fit_transform(y)
-
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, train_size=0.8, shuffle=True, random_state=42
-)
-
-
-print(X_train.shape,y_train.shape)
-print(X_test.shape, y_test.shape)
-
-print(type(X_train))
-print(type(y_train))
+# import seaborn as sns
+# import matplotlib.pyplot as plt
+# import plotly.express as px
+#
+# from sklearn.metrics import confusion_matrix, classification_report
+# from sklearn.preprocessing import MinMaxScaler, LabelEncoder
+# from sklearn.model_selection import train_test_split
+#
+# import tensorflow as tf
+# from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers import Dense
+#
+#
+#
+# path = "data/raw/data.csv"
+# data = pd.read_csv(path)
+#
+# print(data.head(20))
+# print(data.info())
+#
+#
+# ## Preprocessing a bit
+# data.drop(columns=['id', "Unnamed: 32"], inplace=True)
+#
+# # printing the column to list
+# print(data.columns.to_list())
+#
+#
+# # printing the number of Malignant and Benign
+# data_diagnosis = data['diagnosis'].value_counts().reset_index()
+# print(data_diagnosis)
+#
+#
+# # # show the difference between the number of Malignant & benign
+# # fig = px.pie(data_diagnosis, values='count', names='diagnosis', title='the number of Malignant and Benign')
+# #
+# # fig.show()
+#
+#
+# # training a model,
+# X = data.drop('diagnosis', axis = 1)
+# y = data['diagnosis']
+#
+#
+# # scaling the features to max value 1 and min value of 0
+# scaler = MinMaxScaler()
+# X = scaler.fit_transform(X)
+#
+# # encoding the target from categorical to numerical
+# encoder = LabelEncoder()
+# y = encoder.fit_transform(y)
+#
+# X_train, X_test, y_train, y_test = train_test_split(
+#     X, y, train_size=0.8, shuffle=True, random_state=42
+# )
+#
+#
+# print(X_train.shape,y_train.shape)
+# print(X_test.shape, y_test.shape)
+#
+# print(type(X_train))
+# print(type(y_train))
 #
 # # ANN Model
 # # buidling ANN model with input layer and two hidden layer and one output layer and activation function
@@ -138,3 +138,23 @@ print(type(y_train))
 # print("\nClassification Report:")
 # print(classification_rep)
 #
+
+
+from src.training import initializing_model, fitting_model
+from src.preprocessing import preprocess
+from src.eda import perform_eda
+import pandas as pd
+
+# need to add config
+path = "./data/raw/data.csv"
+data = pd.read_csv(path)
+
+X, y = preprocess(data, columns_to_drop=['id', "Unnamed: 32"],
+                  target_col='diagnosis')
+print(X, y)
+perform_eda(data, eda_path='./report/eda_report', target_column='diagnosis')
+
+
+model = initializing_model()
+#
+fitting_model(model, X, y)

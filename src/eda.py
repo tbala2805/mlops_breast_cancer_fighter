@@ -3,7 +3,7 @@ import os
 import plotly.express as px
 
 
-def eda(data: pd.DataFrame, eda_path: str, target_column:str )-> None:
+def perform_eda(data: pd.DataFrame, eda_path: str, target_column:str )-> None:
 
     # writing info
     with open(os.path.join(eda_path, "data_information.txt"), 'w') as f:
@@ -14,12 +14,5 @@ def eda(data: pd.DataFrame, eda_path: str, target_column:str )-> None:
     fig.write_image(os.path.join(eda_path, "pie_chart.png"))
 
 
-
-
-
-# need to add config
-path = "../data/raw/data.csv"
-data = pd.read_csv(path)
-eda(data, eda_path='../report/eda_report', target_column='diagnosis')
 
 
