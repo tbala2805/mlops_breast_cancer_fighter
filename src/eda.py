@@ -5,6 +5,7 @@ import plotly.express as px
 
 def perform_eda(data: pd.DataFrame, eda_path: str, target_column:str )-> None:
 
+
     # writing info
     with open(os.path.join(eda_path, "data_information.txt"), 'w') as f:
         data.info(buf=f)
