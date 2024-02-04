@@ -1,15 +1,22 @@
-root - INFO - reading a file - 2024-02-04 16:45:59,003
-root - INFO -        id diagnosis  ...  fractal_dimension_worst  Unnamed: 32
+2024-02-04 17:05:39,291 - root - INFO - Reading configs
+2024-02-04 17:05:39,291 - root - INFO - 
+Configs are as path: ./data/raw/data.csv
+eda report path:./report/eda_report
+model_report_path: ./report/model_report
+cols_to_drp: ['id', 'Unnamed: 32']
+target_col: diagnosis
+2024-02-04 17:05:39,291 - root - INFO - reading a file
+2024-02-04 17:05:39,294 - root - INFO -        id diagnosis  ...  fractal_dimension_worst  Unnamed: 32
 0  842302         M  ...                  0.11890          NaN
 1  842517         M  ...                  0.08902          NaN
 
-[2 rows x 33 columns] - 2024-02-04 16:45:59,005
-root - INFO - preprocessing the data... - 2024-02-04 16:45:59,012
-root - INFO - Performing EDA on the data - 2024-02-04 16:45:59,013
-root - INFO - EDA is completed - 2024-02-04 16:45:59,413
-root - INFO - Initializing the tf model - 2024-02-04 16:45:59,413
-root - INFO - Model is initialized - 2024-02-04 16:45:59,451
-root - INFO - Fitting a model - 2024-02-04 16:45:59,451
-matplotlib.pyplot - DEBUG - Loaded backend macosx version unknown. - 2024-02-04 16:46:00,358
-matplotlib.colorbar - DEBUG - locator: <matplotlib.ticker.AutoLocator object at 0x28a454790> - 2024-02-04 16:46:00,751
-root - INFO - Training is completed - 2024-02-04 16:46:00,978
+[2 rows x 33 columns]
+2024-02-04 17:05:39,300 - root - INFO - preprocessing the data...
+2024-02-04 17:05:39,302 - root - INFO - Performing EDA on the data
+2024-02-04 17:05:39,692 - root - INFO - EDA is completed
+2024-02-04 17:05:39,693 - root - INFO - Initializing the tf model
+2024-02-04 17:05:39,730 - root - INFO - Model is initialized
+2024-02-04 17:05:39,731 - root - INFO - Fitting a model
+2024-02-04 17:05:40,606 - matplotlib.pyplot - DEBUG - Loaded backend macosx version unknown.
+2024-02-04 17:05:41,008 - matplotlib.colorbar - DEBUG - locator: <matplotlib.ticker.AutoLocator object at 0x292627a10>
+2024-02-04 17:05:41,231 - root - INFO - Training is completed
