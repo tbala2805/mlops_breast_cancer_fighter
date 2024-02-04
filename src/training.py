@@ -33,10 +33,10 @@ def initializing_model():
         loss = 'binary_crossentropy',
         metrics = ['accuracy']
     )
-    print(model.summary())
+
     return model
 
-def fitting_model(model, X, y):
+def fitting_model(model, X, y, model_report_path, target_classes):
 
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -73,7 +73,7 @@ def fitting_model(model, X, y):
     plt.ylabel('Accuracy')
 
     plt.tight_layout()
-    plt.savefig(os.path.join('./report/model_report','accuracy_loss_report.png' ))
+    plt.savefig(os.path.join(model_report_path,'accuracy_loss_report.png' ))
 
 
 
@@ -83,7 +83,7 @@ def fitting_model(model, X, y):
 
     cm = confusion_matrix(y_test, y_pred)
     sns.heatmap(cm, annot=True)
-    plt.savefig(os.path.join('./report/model_report','confusion_matrix.png' ))
+    plt.savefig(os.path.join(model_report_path,'confusion_matrix.png' ))
 
 
     # report

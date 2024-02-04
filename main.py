@@ -5,20 +5,20 @@ import pandas as pd
 from src.utils import get_logger
 import configparser
 
+#logger
 log = get_logger()
 log.getLogger('matplotlib.font_manager').disabled = True # disabling the matplotlib debugging for my project
 
-
+# configs
 log.info('Reading configs')
-
 configprsr = configparser.ConfigParser()
 config = configprsr.read('config.ini')
 path = configprsr['DEFAULT']['path']
 eda_report_path = configprsr['DEFAULT']['eda_report_path']
 model_report_path = configprsr['DEFAULT']['model_report_path']
-
 cols_to_drop = configprsr['PREPROCESSING']['cols_to_drop'].split(',')
 target_col = configprsr['PREPROCESSING']['target_col']
+target_classes = configprsr['TARGET_CLASSES']['target_classes']
 
 log.info(f"\nConfigs are as path: {path}\neda report path:{eda_report_path}"
          f"\nmodel_report_path: {model_report_path}\ncols_to_drp: {cols_to_drop}"
@@ -43,5 +43,5 @@ model = initializing_model()
 log.info("Model is initialized")
 #
 log.info("Fitting a model")
-fitting_model(model, X, y)
+fitting_model(model, X, y, model_report_path=model_report_path, target_classes=target_classes)
 log.info("Training is completed")
