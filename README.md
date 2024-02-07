@@ -11,5 +11,5 @@ The repository named mlops_breast_cancer_fighter due to the reason we tried to i
 
 # To do:
 
-1. Planing to built the inference script, where can give result/report custom dataset to test
+1. Planing to built the inference script, where can give result/report custom dataset for evaluation
 2. Built webapp/Dashbaord via flask application to display these outputs , when the users upload the data
