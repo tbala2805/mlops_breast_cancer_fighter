@@ -1,4 +1,4 @@
-# mlops_breast_cancer_fighter
+# Mlops_Breast_Cancer_Fighter
 
 This project objective is to find the person  is afftected by breast cancer (Maligant) or not affected (Benign)
 
