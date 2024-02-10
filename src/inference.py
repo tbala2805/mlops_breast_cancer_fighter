@@ -13,4 +13,10 @@ def inference_load_model_dev(model, data):
     return model.predict(data)
 
 
+def preprocessing_inference(min_max_scaler, data, columns_to_drop):
+    # Preprocessing a bit
+    data.drop(columns=columns_to_drop, inplace=True, axis=1)
+    return min_max_scaler.transform(data)
+
+
 
