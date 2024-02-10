@@ -1,22 +1,25 @@
-2024-02-04 17:14:41,567 - root - INFO - Reading configs
-2024-02-04 17:14:41,567 - root - INFO - 
+2024-02-10 17:43:36,929 - root - INFO - Reading configs
+2024-02-10 17:43:36,930 - root - INFO - 
 Configs are as path: ./data/raw/data.csv
 eda report path:./report/eda_report
 model_report_path: ./report/model_report
 cols_to_drp: ['id', 'Unnamed: 32']
 target_col: diagnosis
-2024-02-04 17:14:41,567 - root - INFO - reading a file
-2024-02-04 17:14:41,570 - root - INFO -        id diagnosis  ...  fractal_dimension_worst  Unnamed: 32
+2024-02-10 17:43:36,930 - root - INFO - reading a file
+2024-02-10 17:43:36,935 - root - INFO -        id diagnosis  ...  fractal_dimension_worst  Unnamed: 32
 0  842302         M  ...                  0.11890          NaN
 1  842517         M  ...                  0.08902          NaN
 
 [2 rows x 33 columns]
-2024-02-04 17:14:41,576 - root - INFO - preprocessing the data...
-2024-02-04 17:14:41,578 - root - INFO - Performing EDA on the data
-2024-02-04 17:14:41,977 - root - INFO - EDA is completed
-2024-02-04 17:14:41,977 - root - INFO - Initializing the tf model
-2024-02-04 17:14:42,016 - root - INFO - Model is initialized
-2024-02-04 17:14:42,016 - root - INFO - Fitting a model
-2024-02-04 17:14:42,995 - matplotlib.pyplot - DEBUG - Loaded backend macosx version unknown.
-2024-02-04 17:14:43,389 - matplotlib.colorbar - DEBUG - locator: <matplotlib.ticker.AutoLocator object at 0x28a4f0390>
-2024-02-04 17:14:43,613 - root - INFO - Training is completed
+2024-02-10 17:43:36,947 - root - INFO - preprocessing the data...
+2024-02-10 17:43:36,949 - root - INFO - Performing EDA on the data
+2024-02-10 17:43:39,972 - root - INFO - EDA is completed
+2024-02-10 17:43:39,972 - root - INFO - Initializing the tf model
+2024-02-10 17:43:40,026 - root - INFO - Model is initialized
+2024-02-10 17:43:40,026 - root - INFO - Fitting a model
+2024-02-10 17:43:40,972 - matplotlib.pyplot - DEBUG - Loaded backend macosx version unknown.
+2024-02-10 17:43:41,402 - matplotlib.colorbar - DEBUG - locator: <matplotlib.ticker.AutoLocator object at 0x17eef2410>
+2024-02-10 17:43:41,626 - root - INFO - Training is completed
+2024-02-10 17:43:41,627 - root - INFO - Saving a model
+2024-02-10 17:43:41,879 - tensorflow - INFO - Assets written to: ./models/my_model/assets
+2024-02-10 17:43:41,884 - root - INFO - Model is saved
