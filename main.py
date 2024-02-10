@@ -1,7 +1,9 @@
 from src.training import initializing_model, fitting_model, save_model
 from src.preprocessing import preprocess
 from src.eda import perform_eda
+from src.inference import _load_model, inference_load_model_dev
 import pandas as pd
+import os
 from src.utils import get_logger
 import configparser
 
@@ -38,7 +40,7 @@ log.info("Performing EDA on the data")
 perform_eda(data, eda_path=eda_report_path, target_column=target_col)
 log.info("EDA is completed")
 #
-#
+
 log.info("Initializing the tf model")
 model = initializing_model()
 log.info("Model is initialized")
@@ -50,3 +52,15 @@ log.info("Training is completed")
 log.info("Saving a model")
 save_model(model, model_path)
 log.info("Model is saved")
+
+# loading the model
+model = _load_model(os.path.join(model_path, "my_model"))
+
+prediction = inference_load_model_dev(model, X)
+print(prediction)
+print("Prediction is completed!!!")
+
+
+
+
+
