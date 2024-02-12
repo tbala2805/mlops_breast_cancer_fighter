@@ -94,3 +94,20 @@ def fitting_model(model, X, y, model_report_path, target_classes):
     print("\nClassification Report:")
     print(classification_rep)
 
+    return model
+
+
+def save_model(model, path):
+    """
+    function to save a model
+
+    :param model:
+    :param path:
+    :return:
+    """
+    model.save(os.path.join(path, 'my_model'))
+    print("model is saved")
+
+
+
+
