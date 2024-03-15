@@ -6,7 +6,7 @@ import pandas as pd
 import os
 from src.utils import get_logger
 import configparser
-
+print("Importing libraries is completed!")
 #logger
 log = get_logger()
 log.getLogger('matplotlib.font_manager').disabled = True # disabling the matplotlib debugging for my project
@@ -22,6 +22,7 @@ assets_path = "assets"
 cols_to_drop = configprsr['PREPROCESSING']['cols_to_drop'].split(',')
 target_col = configprsr['PREPROCESSING']['target_col']
 target_classes = configprsr['TARGET_CLASSES']['target_classes']
+print("Reading config path is completed!")
 
 log.info(f"\nConfigs are as path: {path}\neda report path:{eda_report_path}"
          f"\nmodel_report_path: {model_report_path}\ncols_to_drp: {cols_to_drop}"
@@ -31,49 +32,49 @@ log.info(f"\nConfigs are as path: {path}\neda report path:{eda_report_path}"
 log.info("reading a file")
 data = pd.read_csv(path)
 log.info(data.head(2))
-
-log.info("preprocessing the data...")
+print("Reading input data is completed!")
+print("Begining of preprocessing the data !")
+log.info("Begining of EDA /Preprocessing the data...")
 X, y = preprocess(data, columns_to_drop=cols_to_drop,
                   target_col=target_col, assets_path = assets_path)
 print(X, y)
 log.info("Performing EDA on the data")
 perform_eda(data, eda_path=eda_report_path, target_column=target_col)
 log.info("EDA is completed")
+print('EDA is completed!')
 #
-
+print('Initializing the tf model!')
 log.info("Initializing the tf model")
 model = initializing_model()
 log.info("Model is initialized")
 #
+print('Model Training Starts!')
 log.info("Fitting a model")
 model = fitting_model(model, X, y, model_report_path=model_report_path, target_classes=target_classes)
 log.info("Training is completed")
-
+print('Training completed!')
 log.info("Saving a model")
 save_model(model, assets_path)
 log.info("Model is saved")
+print('Model is saved')
 
 # sample inferencing
 # reading data
+print(" sample inferencing and reading data")
 data = pd.read_csv(path)
 
 # preprocessing
 # creating a dataset with no target variable
-
+print("creating a dataset with no target variable - preprocessing")
 data = data.drop(target_col, axis=1)
 print(data.columns)
 min_max_scaler = load_saved_minmax(assets_path)
 preprocessed_inference_data = preprocessing_inference(min_max_scaler, data, columns_to_drop=cols_to_drop)
-
+print("loading the model!")
 # loading the model
 model = _load_model(os.path.join(assets_path, "my_model"))
-
-
+print("Model loading is completed!")
+print("Prediction starts!")
 prediction = inference_load_model_dev(model, preprocessed_inference_data)
 print(prediction)
 print("Prediction is completed!!!")
-
-
-
-
-
